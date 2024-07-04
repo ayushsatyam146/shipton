@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	GroupName = "shipton.yourdomain.com"
+	GroupName = "shipton.asatyam.com"
 	Version   = "v1alpha1"
 )
 
