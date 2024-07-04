@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipton-controller-manager
+  namespace: shipton-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      containers:
+        - name: manager
+          image: quay.io/rh-ee-asatyam/shipton-controller-manager:latest
+          command:
+            - /manager
+          args:
+            - --metrics-addr=:8080
+            - --enable-leader-election
+          ports:
+            - containerPort: 8080
+              name: metrics
